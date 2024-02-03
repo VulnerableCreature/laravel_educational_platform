@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+    nginx:
+        build:
+            context: docker/nginx
+            dockerfile: nginx.Dockerfile
+        ports:
+            - "8005:80"
+        volumes:
+            - ./docker/nginx/conf/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+            - ./src:/var/www/laravel_attendance_tracking
+            - ./docker/nginx/logs:/var/log/nginx
+        depends_on:
+            - "php"
+            - "postgresql"
+        restart: unless-stopped
+
+    php:
+        build:
+            context: docker/php
+            dockerfile: php.Dockerfile
+        volumes:
+            - ./src:/var/www/laravel_attendance_tracking
+        restart: unless-stopped
+
+    postgresql:
+        image: postgres:15.4
+        ports:
+            - "5433:5432"
+        env_file:
+            - ./docker/env/pgsql.env
+        volumes:
+            - ./docker/pgsql:/var/lib/postgresql/data
+        restart: unless-stopped
+
+    composer:
+        build:
+            context: docker/composer
+            dockerfile: composer.Dockerfile
+        volumes:
+            - ./src:/var/www/laravel_attendance_tracking
+
+    artisan:
+        build:
+            context: docker/php
+            dockerfile: php.Dockerfile
+        volumes:
+            - ./src:/var/www/laravel_attendance_tracking
+        entrypoint: [ "php", "/var/www/laravel_attendance_tracking/artisan" ]
