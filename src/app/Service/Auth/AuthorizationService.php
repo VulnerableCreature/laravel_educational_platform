@@ -15,4 +15,9 @@ class AuthorizationService implements AuthorizationContract
 
 		return true;
 	}
+
+	public function logout(): void
+	{
+		Auth::logout();
+	}
 }

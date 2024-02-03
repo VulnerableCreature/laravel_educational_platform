@@ -29,4 +29,10 @@ class AuthorizationController extends Controller
 		}
 		return redirect()->back()->withErrors(['login' => 'Логин или пароль введены неверно']);
 	}
+
+	public function delete(): RedirectResponse
+	{
+		$this->service->logout();
+		return redirect()->route('auth.index');
+	}
 }

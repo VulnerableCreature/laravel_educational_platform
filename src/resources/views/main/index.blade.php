@@ -2,5 +2,10 @@
 @section('title', 'Главная')
 
 @section('content')
-main
+    main
+
+    <form action="{{ route('auth.delete') }}" method="POST">
+        @csrf
+        <button type="submit">Exit</button>
+    </form>
 @endsection
