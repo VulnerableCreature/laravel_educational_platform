@@ -9,9 +9,17 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php composer-setup.php \
   && php -r "unlink('composer-setup.php');"
 
-COPY . /var/www/laravel_report_online/
+COPY . /var/www/laravel_educational_platform/
 
-RUN chown -R www-data:www-data /var/www/laravel_educational_platform
+RUN chown -R www-data:www-data \
+        /var/www/laravel_educational_platform/storage \
+        /var/www/laravel_educational_platform/bootstrap/cache
+
+# RUN usermod -a -G www-data root
+# RUN chown -R $USER:www-data /var/www/laravel_educational_platform
+
+# RUN sudo chown -R www-data:www-data /var/www/laravel_educational_platform \
+#     && sudo chmod 777 -R /var/www/laravel_educational_platform/storage \
 
 RUN apt-get install -y libpq-dev \
   && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \

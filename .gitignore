@@ -1,2 +1,2 @@
-./docker/pgsql
-./docker/nginx/logs/.*
+/docker/pgsql
+/docker/nginx/logs

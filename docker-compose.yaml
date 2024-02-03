@@ -9,7 +9,7 @@ services:
             - "8005:80"
         volumes:
             - ./docker/nginx/conf/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-            - ./src:/var/www/laravel_attendance_tracking
+            - ./src:/var/www/laravel_educational_platform
             - ./docker/nginx/logs:/var/log/nginx
         depends_on:
             - "php"
@@ -21,13 +21,13 @@ services:
             context: docker/php
             dockerfile: php.Dockerfile
         volumes:
-            - ./src:/var/www/laravel_attendance_tracking
+            - ./src:/var/www/laravel_educational_platform
         restart: unless-stopped
 
     postgresql:
         image: postgres:15.4
         ports:
-            - "5433:5432"
+            - "5434:5432"
         env_file:
             - ./docker/env/pgsql.env
         volumes:
@@ -39,12 +39,12 @@ services:
             context: docker/composer
             dockerfile: composer.Dockerfile
         volumes:
-            - ./src:/var/www/laravel_attendance_tracking
+            - ./src:/var/www/laravel_educational_platform
 
     artisan:
         build:
             context: docker/php
             dockerfile: php.Dockerfile
         volumes:
-            - ./src:/var/www/laravel_attendance_tracking
-        entrypoint: [ "php", "/var/www/laravel_attendance_tracking/artisan" ]
+            - ./src:/var/www/laravel_educational_platform
+        entrypoint: [ "php", "/var/www/laravel_educational_platform/artisan" ]
