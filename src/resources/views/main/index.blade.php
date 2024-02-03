@@ -4,7 +4,7 @@
 @section('content')
     main
 
-    <form action="{{ route('auth.delete') }}" method="POST">
+    <form action="{{ route('auth.logout') }}" method="POST">
         @csrf
         <button type="submit">Exit</button>
     </form>

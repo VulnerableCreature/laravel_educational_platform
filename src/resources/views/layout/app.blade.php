@@ -13,8 +13,9 @@
     <link rel="icon" href="https://laravel-livewire.com/favicon.ico">
 
     <!-- Styles -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <tallstackui:script />
     @livewireStyles
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="antialiased font-main">

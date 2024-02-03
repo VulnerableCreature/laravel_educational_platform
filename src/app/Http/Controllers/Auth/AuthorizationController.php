@@ -21,7 +21,7 @@ class AuthorizationController extends Controller
 		return view('auth.index');
 	}
 
-	public function store(AuthorizationRequest $request): RedirectResponse
+	public function login(AuthorizationRequest $request): RedirectResponse
 	{
 		$credentials = $request->validated();
 		if ($this->service->login($credentials)) {
@@ -30,7 +30,7 @@ class AuthorizationController extends Controller
 		return redirect()->back()->withErrors(['login' => 'Логин или пароль введены неверно']);
 	}
 
-	public function delete(): RedirectResponse
+	public function logout(): RedirectResponse
 	{
 		$this->service->logout();
 		return redirect()->route('auth.index');
