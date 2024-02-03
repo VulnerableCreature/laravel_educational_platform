@@ -1,6 +1,6 @@
 @extends('layout.app')
-@section('title', 'Авторизация')
+@section('title', 'Главная')
 
 @section('content')
-auth
+main
 @endsection
