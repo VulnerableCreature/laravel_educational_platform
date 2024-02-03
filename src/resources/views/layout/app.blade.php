@@ -17,7 +17,7 @@
     @livewireStyles
 </head>
 
-<body class="antialiased">
+<body class="antialiased font-main">
     @yield('content')
     @livewireScripts
 </body>
