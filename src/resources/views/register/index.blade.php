@@ -9,7 +9,7 @@
                 <span class="font-bold text-2xl">Создайте аккаунт</span>
             </div>
             <div class="mx-auto max-w-md w-full">
-                <form action="#" method="POST" class="space-y-3 px-12" autocomplete="off">
+                <form action="{{ route('register.store') }}" method="POST" class="space-y-3 px-12" autocomplete="off">
                     @csrf
                     <div>
                         <div class="relative rounded-md shadow-sm">
@@ -37,6 +37,9 @@
                             @enderror
                         </div>
                     </div>
+                    @error('surname')
+                        <p class="mt-1 text-md text-red-600 font-semibold">{{ $message }}</p>
+                    @enderror
                     <div>
                         <div class="relative rounded-md shadow-sm">
                             <div class="absolute left-0 inset-y-0 flex items-center pl-3">
@@ -63,6 +66,9 @@
                             @enderror
                         </div>
                     </div>
+                    @error('name')
+                        <p class="mt-1 text-md text-red-600 font-semibold">{{ $message }}</p>
+                    @enderror
                     <div>
                         <div class="relative rounded-md shadow-sm">
                             <div class="absolute left-0 inset-y-0 flex items-center pl-3">
@@ -89,6 +95,9 @@
                             @enderror
                         </div>
                     </div>
+                    @error('middleName')
+                        <p class="mt-1 text-md text-red-600 font-semibold">{{ $message }}</p>
+                    @enderror
                     <div>
                         <div class="relative rounded-md shadow-sm">
                             <div class="absolute left-0 inset-y-0 flex items-center pl-3">
@@ -115,6 +124,9 @@
                             @enderror
                         </div>
                     </div>
+                    @error('email')
+                        <p class="mt-1 text-md text-red-600 font-semibold">{{ $message }}</p>
+                    @enderror
                     <div>
                         <div class="relative rounded-md shadow-sm">
                             <div class="absolute left-0 inset-y-0 flex items-center pl-3">
