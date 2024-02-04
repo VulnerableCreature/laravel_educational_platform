@@ -1,11 +1,6 @@
-@extends('layout.app')
+@extends('layout.user-layout')
 @section('title', 'Главная')
 
 @section('content')
     main
-
-    <form action="{{ route('auth.logout') }}" method="POST">
-        @csrf
-        <button type="submit">Exit</button>
-    </form>
 @endsection
