@@ -14,7 +14,7 @@
             </header>
             @yield('content')
         </div>
-        <div class="float-right w-2/5 px-4">
+        <div class="float-right w-2/5 px-8">
             <livewire:decoration.profile />
         </div>
     </section>

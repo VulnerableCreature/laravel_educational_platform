@@ -2,5 +2,5 @@
 @section('title', 'Главная')
 
 @section('content')
-    main
+    <livewire:courses.new.course />
 @endsection
