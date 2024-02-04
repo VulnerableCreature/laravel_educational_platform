@@ -23,7 +23,7 @@
 
                             </div>
                             <input type="text" name="login"
-                                class="w-full px-10 {{ $errors->has('login') ? 'border-red-700 text-red-800 placeholder:text-red-800 rounded-md pl-10 focus:border-red-700 focus:ring-red-700' : 'border-gray-400 text-gray-700 placeholder:text-gray-500 text-gray-500 rounded-md pl-10 focus:border-[#8a70d6] focus:ring-[#8a70d6]' }}"
+                                class="w-full px-10 {{ $errors->has('login') ? 'border-red-700 text-red-800 placeholder:text-red-800 rounded-md pl-10 focus:border-red-700 focus:ring-red-700' : 'border-gray-400 text-gray-700 placeholder:text-gray-500 rounded-md pl-10 focus:border-[#8a70d6] focus:ring-[#8a70d6]' }}"
                                 value="{{ old('login') }}" placeholder="Логин" spellcheck="false" autofocus>
                             @error('login')
                                 <div class="absolute right-0 inset-y-0 flex items-center pl-3 pr-3">
@@ -52,7 +52,7 @@
                                 </svg>
                             </div>
                             <input x-bind:type="visible ? 'password' : 'text'" name="password" id="password"
-                                class="w-full px-10 {{ $errors->has('password') ? 'border-red-700 text-red-800 placeholder:text-red-800 rounded-md pl-10 focus:border-red-700 focus:ring-red-700' : 'border-gray-400 text-gray-700 placeholder:text-gray-500 text-gray-500 rounded-md pl-10 focus:border-[#8a70d6] focus:ring-[#8a70d6]' }}"
+                                class="w-full px-10 {{ $errors->has('password') ? 'border-red-700 text-red-800 placeholder:text-red-800 rounded-md pl-10 focus:border-red-700 focus:ring-red-700' : 'border-gray-400 text-gray-700 placeholder:text-gray-500 rounded-md pl-10 focus:border-[#8a70d6] focus:ring-[#8a70d6]' }}"
                                 placeholder="Пароль" spellcheck="false">
                             <div class="absolute right-0 inset-y-0 flex items-center pl-3 pr-3">
                                 <button type="button" x-on:click="visible = !visible" x-tooltip="Показать пароль">
