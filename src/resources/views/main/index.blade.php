@@ -2,5 +2,8 @@
 @section('title', 'Главная')
 
 @section('content')
-    <livewire:courses.new.course />
+    <div class="mb-4">
+        <livewire:courses.new.course />
+    </div>
+    <livewire:courses.popular.course />
 @endsection
