@@ -1,17 +1,13 @@
-<aside class="fixed t-0 w-72 min-h-full hidden lg:block">
-    <header class="w-full h-16 px-6 flex items-center justify-start">
-        <a href="{{ route('main.index') }}" class="flex items-center">
+    <div class="block lg:hidden">
+        <button x-on:click="$slideOpen('side-menu')" class="p-2 rounded-md bg-white shadow-xl">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-7 h-7 mr-1">
+                stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                    d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
+                    d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
             </svg>
 
-            <span class="uppercase font-semibold text-lg">Академия</span>
-        </a>
-    </header>
-    <section class="py-4 px-3">
-        <section class="py-2">
+        </button>
+        <x-slide title="Меню" id="side-menu" size="sm" left blur>
             <ul role="list" class="flex flex-col gap-1">
                 <li>
                     <a href="{{ route('main.index') }}"
@@ -44,7 +40,8 @@
                         </svg>
 
 
-                        <span class="mr-auto group-hover:font-bold text-sm {{ Route::is('course.index') ? 'font-bold text-sm' : '' }}">Курсы</span>
+                        <span
+                            class="mr-auto group-hover:font-bold text-sm {{ Route::is('course.index') ? 'font-bold text-sm' : '' }}">Курсы</span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" data-slot="icon"
                             class="w-6 h-6 group-hover:stroke-violet-icon group-hover:stroke-[2px] transition {{ Route::is('course.index') ? 'stroke-[2px]' : '' }}">
@@ -74,6 +71,5 @@
                     </a>
                 </li>
             </ul>
-        </section>
-    </section>
-</aside>
+        </x-slide>
+    </div>

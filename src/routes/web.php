@@ -14,3 +14,4 @@
 require __DIR__ . '/groups/auth.php';
 require __DIR__ . '/groups/main.php';
 require __DIR__ . '/groups/register.php';
+require __DIR__ . '/groups/course.php';

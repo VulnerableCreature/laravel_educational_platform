@@ -32,7 +32,10 @@
             <span class="text-md font-medium">{{ $user->fullName }}</span>
             <span class="text-gray-500">Студент</span>
         </div>
-        <span class="text-xl font-semibold">Мои курсы</span>
+        <div class="flex items-center justify-between mb-4">
+            <span class="text-2xl font-semibold">Мои курсы</span>
+            <a href="#" class="text-[#8a70d6] underline underline-offset-1">Смотреть все</a>
+        </div>
         <div class="flex flex-col gap-2">
             <a href="#" class="flex flex-col gap-1 px-1 py-3 rounded-xl hover:bg-[#efecff]">
                 <div class="flex items-center justify-between gap-2">
