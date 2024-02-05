@@ -9,6 +9,7 @@ use App\Service\Register\RegisterService;
 use App\Service\Auth\AuthorizationService;
 use App\Contracts\Register\RegisterContract;
 use App\Contracts\Auth\AuthorizationContract;
+use TallStackUi\Facades\TallStackUi;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        TallStackUi::personalize()
+            ->tab()
+            ->block('wrapper', 'w-full bg-transparent');
     }
 }
