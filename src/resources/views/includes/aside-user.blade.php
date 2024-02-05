@@ -1,6 +1,6 @@
 <aside class="fixed t-0 w-72 min-h-full hidden lg:block">
     <header class="w-full h-16 px-6 flex items-center justify-start">
-        <a href="{{ route('main.index') }}" class="flex items-center">
+        <a href="{{ route('main.index') }}" class="flex items-center pt-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-7 h-7 mr-1">
                 <path stroke-linecap="round" stroke-linejoin="round"

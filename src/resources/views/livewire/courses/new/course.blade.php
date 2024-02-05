@@ -1,6 +1,6 @@
 <div>
     <span class="text-2xl font-semibold">Новые курсы</span>
-    <section class="mt-2 grid grid-cols-2 gap-3 xl:grid-cols-4 md:grid-cols-4">
+    <section class="mt-4 grid grid-cols-2 gap-3 xl:grid-cols-4 md:grid-cols-4">
         <div class="w-full h-72 p-4 bg-[#fff0e1] rounded-xl flex flex-col gap-2">
             <div class="h-32 bg-[#fbab5d] rounded-xl flex items-center justify-center">
                 <img src="{{ asset('images/course-one.png') }}" alt="Image: photo course" class="w-28 h-28 ">
