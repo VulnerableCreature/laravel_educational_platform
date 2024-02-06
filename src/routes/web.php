@@ -34,6 +34,6 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
 
 	Route::group(['namespace' => 'Course', 'prefix' => 'courses'], function () {
 		Route::get('/', [CourseController::class, 'index'])->name('course.index');
-		Route::get('/course', [CourseController::class, 'show'])->name('course.show');
+		Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.show');
 	});
 });

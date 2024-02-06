@@ -2,18 +2,29 @@
 
 namespace App\Http\Controllers\Course;
 
-use App\Http\Controllers\Controller;
 use Illuminate\View\View;
+use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\Service\Course\CourseService;
 
 class CourseController extends Controller
 {
-	public function index(): View
+	protected CourseService $course;
+
+	public function __construct(CourseService $service)
 	{
-		return view('course.index');
+		$this->course = $service;
 	}
 
-	public function show(): View
+	public function index(): View
 	{
-		return view('course.show');
+		$courses = $this->course->allCourse();
+
+		return view('course.index', compact('courses'));
+	}
+
+	public function show(Course $course): View
+	{
+		return view('course.show', compact('course'));
 	}
 }
