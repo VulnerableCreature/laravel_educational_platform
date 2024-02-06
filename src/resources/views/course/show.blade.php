@@ -12,7 +12,7 @@
 
                 <span class="hidden md:block text-lg font-regular">Вернуться к выбору курса</span>
             </a>
-            <x-button icon="pencil" position="left">Записаться</x-button>
+            <x-button icon="pencil" position="left"><span class="hidden sm:block">Записаться</span></x-button>
         </div>
         <x-tab selected="Информация">
             <x-tab.items tab="Информация">
