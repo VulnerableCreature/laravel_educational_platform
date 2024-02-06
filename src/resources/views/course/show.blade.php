@@ -18,8 +18,7 @@
             <x-tab.items tab="Информация">
                 <div class="flex items-start gap-12">
                     <div class="flex flex-col items-start justify-center gap-4">
-                        <img src="{{ asset('images/course-avatar.png') }}" alt="Image: User profile"
-                            class="w-48 h-48 object-contain">
+                        <div class="p-16"><span class="text-5xl font-semibold">{{ $course->firstLetter }}</span></div>
                     </div>
                     <div class="flex flex-col gap-3 py-6">
                         <div class="flex items-end justify-start gap-2">

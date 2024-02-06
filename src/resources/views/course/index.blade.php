@@ -8,7 +8,7 @@
                 <a href="{{ route('course.show', $course->id) }}" class="flex flex-col gap-1 px-2 py-3 rounded-xl hover:bg-[#efecff]">
                     <div class="flex items-center justify-between gap-2">
                         <div class="flex items-center gap-2">
-                            <x-avatar text="TS" color="white" />
+                            <x-avatar text="{{ $course->firstLetter }}" color="white" />
                             <div class="flex flex-col">
                                 <span class="text-md font-medium">{{ $course->title }}</span>
                                 <span class="text-sm font-regular">Ким Виктор Валериянович</span>
