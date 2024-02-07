@@ -1,4 +1,4 @@
-    <div class="block lg:hidden">
+    <div class="block lg:hidden mr-2">
         <button x-on:click="$slideOpen('side-menu')" class="p-2 rounded-md bg-white shadow-xl">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">

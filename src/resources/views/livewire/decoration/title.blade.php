@@ -1,8 +1,8 @@
 <div>
     <div class="w-full h-14 flex items-center justify-between">
         <livewire:decoration.side-mobile />
-        <span class="text-xl font-semibold">@yield('title')</span>
-        <div class="flex items-center gap-2 xl:hidden">
+        <span class="text-xl font-semibold truncate">@yield('title')</span>
+        <div class="flex items-center gap-2 ml-2 xl:hidden">
             <button x-on:click="$slideOpen('profile-slide')" class="p-2 rounded-md bg-white shadow-xl"
                 x-tooltip="Редактировать">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
