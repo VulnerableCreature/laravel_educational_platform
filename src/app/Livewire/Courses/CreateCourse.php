@@ -6,7 +6,6 @@ use App\Models\Course;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use TallStackUi\Traits\Interactions;
-use App\Service\Course\CourseService;
 
 class CreateCourse extends Component
 {
@@ -17,13 +16,6 @@ class CreateCourse extends Component
 
     #[Validate('required|string')]
     public string $description;
-
-    protected CourseService $service;
-
-    public function mount(CourseService $service)
-    {
-        $this->service = $service;
-    }
 
     public function messages()
     {
