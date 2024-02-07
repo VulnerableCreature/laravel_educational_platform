@@ -4,7 +4,7 @@
 @section('content')
     <section class="py-4">
         <div class="flex items-center justify-end mb-2">
-            <a href="#" class="border px-3 py-2 rounded-md flex items-center gap-2 bg-[#6366f1] text-white">
+            <a href="{{ route('course.create') }}" class="border px-2 py-1 rounded-md flex items-center gap-2 bg-[#6366f1] text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                      stroke="currentColor" class="w-5 h-5">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
@@ -32,10 +32,7 @@
                     </div>
                 </a>
             @empty
-                <div class="flex flex-col items-center justify-center gap-2 mt-32">
-                    <img src="{{ asset('images/await.png') }}" alt="Courses: course not found" class="w-48 h-48 object-contain">
-                    <span>Пока никто не добавил не одного курса</span>
-                </div>
+                @include('includes.no-data')
             @endforelse
         </div>
     </section>

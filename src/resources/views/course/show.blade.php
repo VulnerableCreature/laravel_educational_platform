@@ -14,7 +14,7 @@
             </a>
             <x-button icon="pencil" position="left"><span class="hidden sm:block">Записаться</span></x-button>
         </div>
-        <x-tab selected="Учебный материал">
+        <x-tab selected="Информация">
             <x-tab.items tab="Информация">
                 <div class="flex items-start gap-12">
                     <div class="hidden lg:flex flex-col items-center justify-center gap-4">
