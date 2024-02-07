@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(AuthorizationContract::class, AuthorizationService::class);
         $this->app->singleton(UserContract::class, UserService::class);
         $this->app->bind(RegisterContract::class, RegisterService::class);
-        $this->app->singleton(CourseContract::class, CourseService::class);
+        $this->app->bind(CourseContract::class, CourseService::class);
     }
 
     /**

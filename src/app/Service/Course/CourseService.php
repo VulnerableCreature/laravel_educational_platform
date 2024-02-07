@@ -12,12 +12,4 @@ class CourseService implements CourseContract
 	{
 		return Course::all()->sortByDesc('created_at');
 	}
-
-	public function getCourseById(Course $course): Course
-	{
-		/** @var Course $course */
-		$course = Course::query()->find($course->id);
-
-		return $course;
-	}
 }

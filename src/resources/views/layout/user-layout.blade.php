@@ -4,6 +4,7 @@
 @include('includes.head')
 
 <body class="antialiased font-main bg-[#fbfbfb]">
+    <x-toast />
     @include('includes.aside-user')
     <section class="ml-0 py-4 px-3 lg:ml-72 h-screen">
         <div class="float-left w-full xl:w-3/5 px-4 min-h-full">
