@@ -21,18 +21,11 @@ class Course extends Model
 
     public function getFirstLetterAttribute(): string
     {
-        $title = explode(" ", "{$this->title}");
-        $letter = "";
-
-        foreach ($title as $letters) {
-            $letter .= mb_substr($letters, 0, 1);
-        }
-
         return Str::take($this->title, 2);
     }
 
     public function teachers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'course_teacher', 'user_id');
+        return $this->belongsToMany(User::class, 'course_teacher', 'course_id');
     }
 }

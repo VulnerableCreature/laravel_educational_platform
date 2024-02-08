@@ -38,7 +38,7 @@
                             </button>
                         </form>
                         <a href="{{ route('course.edit', $course->id) }}"
-                                class="p-2 rounded-lg w-full flex items-center justify-start gap-2 hover:bg-blue-400 hover:text-white">
+                           class="p-2 rounded-lg w-full flex items-center justify-start gap-2 hover:bg-blue-400 hover:text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                  stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -76,7 +76,7 @@
                         </div>
                         <div class="flex flex-col items-start gap-2">
                             <span class="text-xl font-semibold">Преподаватель</span>
-                            <span class="text-lg font-regular">Ким Виктор Валериянович</span>
+                            <span class="text-lg font-regular">{{ $teacher ?? 'Отсутствует' }}</span>
                         </div>
                         <div class="flex flex-col items-start gap-2">
                             <span class="text-xl font-semibold">Количество уроков</span>
