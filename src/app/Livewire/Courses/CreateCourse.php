@@ -3,6 +3,7 @@
 namespace App\Livewire\Courses;
 
 use App\Models\Course;
+use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 use TallStackUi\Traits\Interactions;
@@ -17,7 +18,7 @@ class CreateCourse extends Component
     #[Validate('required|string')]
     public string $description;
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'title.required' => 'Поле заголовок является обязательным',
@@ -25,7 +26,7 @@ class CreateCourse extends Component
         ];
     }
 
-    public function create()
+    public function create(): void
     {
         $data = $this->validate();
 
@@ -35,7 +36,7 @@ class CreateCourse extends Component
         $this->reset();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.courses.create-course');
     }

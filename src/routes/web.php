@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Main\IndexController;
-use App\Http\Controllers\Course\CourseController;
 use App\Http\Controllers\Auth\AuthorizationController;
+use App\Http\Controllers\Main\Course\CourseController;
+use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Register\RegistrationController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +36,8 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::get('/', [CourseController::class, 'index'])->name('course.index');
         Route::get('/course/create', [CourseController::class, 'create'])->name('course.create');
         Route::get('/course/{course}', [CourseController::class, 'show'])->name('course.show');
+        Route::get('/course/{course}/edit', [CourseController::class, 'edit'])->name('course.edit');
+        Route::patch('/course/{course}', [CourseController::class, 'update'])->name('course.update');
+        Route::delete('/course/{course}', [CourseController::class, 'destroy'])->name('course.destroy');
     });
 });

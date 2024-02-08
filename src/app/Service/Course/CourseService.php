@@ -12,4 +12,14 @@ class CourseService implements CourseContract
 	{
 		return Course::all()->sortByDesc('created_at');
 	}
+
+    public function delete(Course $course): void
+    {
+        $course->delete();
+    }
+
+    public function update(Course $course, array $data): void
+    {
+        $course->update($data);
+    }
 }
