@@ -96,7 +96,8 @@
             </x-tab.items>
             <x-tab.items tab="Учебный материал">
                 <div class="flex items-center justify-end mb-2">
-                    <a href="#" class="border px-3 py-2 rounded-md flex items-center gap-2 bg-[#6366f1] text-white"
+                    <a href="{{ route('course.lesson.create', $course->id) }}"
+                       class="border px-3 py-2 rounded-md flex items-center gap-2 bg-[#6366f1] text-white"
                        x-tooltip="Добавить новый материл">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor" class="w-5 h-5">
@@ -106,61 +107,54 @@
                         <span class="font-regular text-sm">Создать</span>
                     </a>
                 </div>
-                @for($j = 0; $j < 7; $j++)
-                    <div class="w-full h-full border-b border-gray-300 last:border-b-0 py-4 px-2 flex flex-col gap-10">
-                        <div class="flex items-center justify-between">
-                            <span class="font-semibold text-xl truncate">Что такое машинное обучение ?</span>
-                            <div class="flex items-center gap-2">
-                                <a href="#" class="p-1 rounded-md hover:bg-[#efecff]" x-tooltip="Редактировать урок">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/>
-                                    </svg>
-                                </a>
-                                <form action="#" class="flex items-center">
-                                    <button class="p-1 rounded-md hover:bg-blue-400 group" x-tooltip="Скрыть урок">
+                @foreach($materials as $material)
+                    @forelse($material as $value)
+                        <div
+                            class="{{ $value->isVisible == 0 ? 'hidden border-b-0' : 'block w-full h-full border-b border-gray-300 last:border-b-0 py-4 px-2 flex flex-col gap-10' }}">
+                            <div class="flex items-center justify-between">
+                                <span class="font-semibold text-xl truncate">{{ $value->title }}</span>
+                                <div class="flex items-center gap-2">
+                                    <a href="#" class="p-1 rounded-md hover:bg-[#efecff]"
+                                       x-tooltip="Редактировать урок">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor"
-                                             class="w-6 h-6 group-hover:stroke-white">
+                                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/>
                                         </svg>
+                                    </a>
+                                    <form action="#" class="flex items-center">
+                                        <button class="p-1 rounded-md hover:bg-blue-400 group" x-tooltip="Скрыть урок">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor"
+                                                 class="w-6 h-6 group-hover:stroke-white">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                            </svg>
 
-                                    </button>
-                                </form>
-                                <form action="#" class="flex items-center">
-                                    <button type="submit" class="p-1 rounded-md hover:bg-red-500 group"
-                                            x-tooltip="Удалить урок">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor"
-                                             class="w-6 h-6 group-hover:stroke-white">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/>
-                                        </svg>
+                                        </button>
+                                    </form>
+                                    <form action="#" class="flex items-center">
+                                        <button type="submit" class="p-1 rounded-md hover:bg-red-500 group"
+                                                x-tooltip="Удалить урок">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor"
+                                                 class="w-6 h-6 group-hover:stroke-white">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/>
+                                            </svg>
 
-                                    </button>
-                                </form>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <span class="font-medium text-md leading-7 whitespace-normal truncate">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore etorbi tincidunt ornare.
-                                Consectetur adipiscing elit ut aliquam purus sit amet luctus.
-                                Aliquet nibh praesent tristique magna.
-                                Et tortor consequat id porta nibh venenatis cras sed.
-                                Lectus proin nibh nisl condimentum id venenatis a.
-                                At in tellus integer feugiat. Elementum nibh tellus molestie nunc non blandit massa enim.
-                                Lorem donec massa sapien faucibus et molestie ac. Nulla porttitor massa id neque.
-                                Blandit cursus risus at ultrices mi tempus imperdiet nulla.
-                                Facilisis volutpat est velit egestas dui id ornare arcu odio. Massa eget egestas purus viverra accumsan in nisl.
+                            <span class="font-medium text-md leading-7 whitespace-normal truncate">
+                                {{ $value->description }}
                             </span>
-                        <div class="flex flex-col items-start justify-center gap-2 w-full">
-                            <span class="font-semibold text-md truncate">Дополнительный материал</span>
-                            <div class="flex items-center gap-2">
-                                @for($i = 0; $i < 3; $i++)
+                            <div class="flex flex-col items-start justify-center gap-2 w-full">
+                                <span class="font-semibold text-md truncate">Дополнительный материал</span>
+                                <div class="flex items-center gap-2">
                                     <a href="#" x-tooltip="Python.pdf">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -168,24 +162,27 @@
                                                   d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/>
                                         </svg>
                                     </a>
-                                @endfor
+                                </div>
                             </div>
-                        </div>
-                        <form action="#" class="flex items-center justify-end">
-                            <button
-                                class="p-2 flex items-center gap-2 rounded-md bg-[#ebe9fb] hover:bg-[#6366f1] group">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                     stroke-width="1.5"
-                                     stroke="currentColor" class="w-6 h-6 group-hover:stroke-white">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                          d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5"/>
-                                </svg>
+                            <form action="#" class="flex items-center justify-end">
+                                <button
+                                    class="p-2 flex items-center gap-2 rounded-md bg-[#ebe9fb] hover:bg-[#6366f1] group">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke-width="1.5"
+                                         stroke="currentColor" class="w-6 h-6 group-hover:stroke-white">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5"/>
+                                    </svg>
 
-                                <span class="text-md font-regular group-hover:text-white">Включить напоминание</span>
-                            </button>
-                        </form>
-                    </div>
-                @endfor
+                                    <span
+                                        class="text-md font-regular group-hover:text-white">Включить напоминание</span>
+                                </button>
+                            </form>
+                        </div>
+                    @empty
+                        @include('includes.no-data')
+                    @endforelse
+                @endforeach
             </x-tab.items>
         </x-tab>
     </section>

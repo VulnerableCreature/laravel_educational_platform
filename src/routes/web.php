@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthorizationController;
 use App\Http\Controllers\Main\Course\CourseController;
+use App\Http\Controllers\Main\Course\Lesson\LessonController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Register\RegistrationController;
 use Illuminate\Support\Facades\Route;
@@ -39,5 +40,10 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::get('/course/{course}/edit', [CourseController::class, 'edit'])->name('course.edit');
         Route::patch('/course/{course}', [CourseController::class, 'update'])->name('course.update');
         Route::delete('/course/{course}', [CourseController::class, 'destroy'])->name('course.destroy');
+
+        Route::group(['namespace' => 'Lesson', 'prefix' => 'course/{course}/lesson'], function () {
+            Route::get('/create', [LessonController::class, 'create'])->name('course.lesson.create');
+            Route::post('/', [LessonController::class, 'store'])->name('course.lesson.store');
+        });
     });
 });
