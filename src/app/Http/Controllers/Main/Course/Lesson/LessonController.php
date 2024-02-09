@@ -28,9 +28,11 @@ class LessonController extends Controller
     public function store(LessonStoreRequest $request, Course $course): RedirectResponse
     {
         $data = $request->validated();
+
         $data['course_id'] = $course->id;
 
         $this->course->addMaterial($data);
+
 
         return redirect()->route('course.show', compact('course'))->with('success', 'Материал успешно добавлен!');
     }

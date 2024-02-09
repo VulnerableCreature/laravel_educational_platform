@@ -6,13 +6,15 @@ use App\Contracts\Course\CourseContract;
 use App\Models\Course;
 use App\Models\Material;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class CourseService implements CourseContract
 {
-	public function allCourse(): Collection
-	{
-		return Course::all()->sortByDesc('created_at');
-	}
+    public function allCourse(): Collection
+    {
+        return Course::all()->sortByDesc('created_at');
+    }
 
     public function delete(Course $course): void
     {
@@ -26,6 +28,14 @@ class CourseService implements CourseContract
 
     public function addMaterial(array $data): void
     {
-        Material::query()->create($data);
+        $data['files'] = Storage::disk('public')->put('/files', $data['files']);
+
+        Material::query()->create([
+            'title' => Arr::get($data, 'title'),
+            'description' => Arr::get($data, 'description'),
+            'isVisible' => Arr::get($data, 'isVisible'),
+            'course_id' => Arr::get($data, 'course_id'),
+            'file_path' => Arr::get($data, 'files')
+        ]);
     }
 }

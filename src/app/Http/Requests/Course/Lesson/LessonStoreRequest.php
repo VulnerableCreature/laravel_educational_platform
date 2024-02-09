@@ -16,16 +16,18 @@ class LessonStoreRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'required',
-            'isVisible' => 'required'
+            'isVisible' => 'required',
+            'files' => 'nullable|file|mimes:pdf,docx'
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'title.required' => 'Поле заголовок обязательно',
             'description.required' => 'Поле краткое содержание обязательно',
             'isVisible.required' => 'Поле видимость обязательно',
+            'files.mimes' => 'Допустимый формат файла: pdf, docx',
         ];
     }
 }

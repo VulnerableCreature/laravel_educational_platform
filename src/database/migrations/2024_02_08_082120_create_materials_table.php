@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->string('title');
             $table->text('description');
             $table->tinyInteger('isVisible');
+            $table->text('file_path');
             $table->timestamps();
         });
     }

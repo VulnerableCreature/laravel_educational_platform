@@ -16,7 +16,8 @@ class Material extends Model
         'course_id',
         'title',
         'description',
-        'isVisible'
+        'isVisible',
+        'file_path'
     ];
 
     public static function visible(): array

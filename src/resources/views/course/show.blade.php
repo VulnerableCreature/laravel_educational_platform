@@ -107,7 +107,7 @@
                 @foreach($materials as $material)
                     @forelse($material as $value)
                         <div
-                            class="{{ $value->isVisible == 0 ? 'hidden border-b-0' : 'block w-full h-full border-b border-gray-300 last:border-b-0 py-4 px-2 flex flex-col gap-10' }}">
+                            class="block w-full h-full border-b border-gray-300 last:border-b-0 py-4 px-2 flex flex-col gap-10">
                             <div class="flex items-center justify-between">
                                 <span class="font-semibold text-xl truncate">{{ $value->title }}</span>
                                 <div class="flex items-center gap-2">
@@ -152,7 +152,7 @@
                             <div class="flex flex-col items-start justify-center gap-2 w-full">
                                 <span class="font-semibold text-md truncate">Дополнительный материал</span>
                                 <div class="flex items-center gap-2">
-                                    <a href="#" x-tooltip="Python.pdf">
+                                    <a href="{{ url('/storage/'.$value->file_path) }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
