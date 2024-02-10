@@ -44,6 +44,9 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::group(['namespace' => 'Lesson', 'prefix' => 'course/{course}/lesson'], function () {
             Route::get('/create', [LessonController::class, 'create'])->name('course.lesson.create');
             Route::post('/', [LessonController::class, 'store'])->name('course.lesson.store');
+            Route::get('/material/{material}/edit', [LessonController::class, 'edit'])->name('course.lesson.edit');
+            Route::patch('/material/{material}/', [LessonController::class, 'update'])->name('course.lesson.update');
+            Route::delete('/material/{material}/', [LessonController::class, 'delete'])->name('course.lesson.delete');
         });
     });
 });

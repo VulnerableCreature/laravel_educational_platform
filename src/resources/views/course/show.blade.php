@@ -77,7 +77,7 @@
                         </div>
                         <div class="flex flex-col items-start gap-2">
                             <span class="text-xl font-semibold">Количество уроков</span>
-                            <span class="text-lg font-regular">213</span>
+                            <span class="text-lg font-regular">{{ $course->materials()->count() }}</span>
                         </div>
                         <div class="flex flex-col items-start gap-2">
                             <span class="text-xl font-semibold">Количество участников</span>
@@ -111,28 +111,33 @@
                             <div class="flex items-center justify-between">
                                 <span class="font-semibold text-xl truncate">{{ $value->title }}</span>
                                 <div class="flex items-center gap-2">
-                                    <a href="#" class="p-1 rounded-md hover:bg-[#efecff]"
+                                    <a href="{{ route('course.lesson.edit', [$course->id, $value->id]) }}"
+                                       class="p-1 rounded-md hover:bg-blue-400 group"
                                        x-tooltip="Редактировать урок">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                             stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                             stroke-width="1.5" stroke="currentColor"
+                                             class="w-6 h-6 group-hover:stroke-white">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                   d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/>
                                         </svg>
                                     </a>
-                                    <form action="#" class="flex items-center">
-                                        <button class="p-1 rounded-md hover:bg-blue-400 group" x-tooltip="Скрыть урок">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                 stroke-width="1.5" stroke="currentColor"
-                                                 class="w-6 h-6 group-hover:stroke-white">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
-                                            </svg>
+                                    {{--                                    <form action="#" class="flex items-center">--}}
+                                    {{--                                        <button class="p-1 rounded-md hover:bg-blue-400 group" x-tooltip="Скрыть урок">--}}
+                                    {{--                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"--}}
+                                    {{--                                                 stroke-width="1.5" stroke="currentColor"--}}
+                                    {{--                                                 class="w-6 h-6 group-hover:stroke-white">--}}
+                                    {{--                                                <path stroke-linecap="round" stroke-linejoin="round"--}}
+                                    {{--                                                      d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>--}}
+                                    {{--                                                <path stroke-linecap="round" stroke-linejoin="round"--}}
+                                    {{--                                                      d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>--}}
+                                    {{--                                            </svg>--}}
 
-                                        </button>
-                                    </form>
-                                    <form action="#" class="flex items-center">
+                                    {{--                                        </button>--}}
+                                    {{--                                    </form>--}}
+                                    <form action="{{ route('course.lesson.delete', [$course->id, $value->id]) }}"
+                                          method="post" class="flex items-center">
+                                        @csrf
+                                        @method('delete')
                                         <button type="submit" class="p-1 rounded-md hover:bg-red-500 group"
                                                 x-tooltip="Удалить урок">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -152,13 +157,21 @@
                             <div class="flex flex-col items-start justify-center gap-2 w-full">
                                 <span class="font-semibold text-md truncate">Дополнительный материал</span>
                                 <div class="flex items-center gap-2">
-                                    <a href="{{ url('/storage/'.$value->file_path) }}">
+                                    @if(is_null($value->file_path))
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                             <path stroke-linecap="round" stroke-linejoin="round"
-                                                  d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/>
+                                                  d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636"/>
                                         </svg>
-                                    </a>
+                                    @else
+                                        <a href="{{ url('/storage/'. $value->file_path) }}" target="_blank">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/>
+                                            </svg>
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                             <form action="#" class="flex items-center justify-end">

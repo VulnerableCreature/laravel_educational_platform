@@ -28,7 +28,9 @@ class CourseService implements CourseContract
 
     public function addMaterial(array $data): void
     {
-        $data['files'] = Storage::disk('public')->put('/files', $data['files']);
+        if (Arr::has($data, ['files'])) {
+            $data['files'] = Storage::disk('public')->put('/files', $data['files']);
+        }
 
         Material::query()->create([
             'title' => Arr::get($data, 'title'),
