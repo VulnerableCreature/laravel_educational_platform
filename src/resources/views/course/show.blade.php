@@ -105,7 +105,7 @@
                         </div>
                         <div class="flex flex-col items-start gap-2">
                             <span class="text-xl font-semibold">Количество участников</span>
-                            <span class="text-lg font-regular">213</span>
+                            <span class="text-lg font-regular">{{ $course->users()->count() }}</span>
                         </div>
                     </div>
                 </div>
