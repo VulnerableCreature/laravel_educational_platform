@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthorizationController;
 use App\Http\Controllers\Main\Course\CourseController;
 use App\Http\Controllers\Main\Course\Lesson\LessonController;
+use App\Http\Controllers\Main\Course\Student\StudentController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Register\RegistrationController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,11 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
             Route::get('/material/{material}/edit', [LessonController::class, 'edit'])->name('course.lesson.edit');
             Route::patch('/material/{material}/', [LessonController::class, 'update'])->name('course.lesson.update');
             Route::delete('/material/{material}/', [LessonController::class, 'delete'])->name('course.lesson.delete');
+        });
+
+        Route::group(['namespace' => 'Student', 'prefix' => 'student'], function (){
+            Route::post('/{course}/subscribe', [StudentController::class, 'subscribe'])->name('course.student.subscribe');
+            Route::post('/{course}/unsubscribe', [StudentController::class, 'unsubscribe'])->name('course.student.unsubscribe');
         });
     });
 });

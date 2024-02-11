@@ -24,7 +24,7 @@
                             <x-avatar text="{{ $course->firstLetter }}" color="white"/>
                             <div class="flex flex-col">
                                 <span class="text-md font-medium">{{ $course->title }}</span>
-                                <span class="text-sm font-regular">{{ $course->teachers()?->first()?->fullName ?? 'Отсутствует' }}</span>
+                                <span class="text-sm font-regular">{{ $course->course_teacher()?->first()?->fullName ?? 'Отсутствует' }}</span>
                             </div>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

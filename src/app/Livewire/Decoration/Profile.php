@@ -3,17 +3,18 @@
 namespace App\Livewire\Decoration;
 
 use App\Service\User\UserService;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class Profile extends Component
 {
     protected UserService $userService;
 
-    public function mount(UserService $service)
+    public function mount(UserService $service): void
     {
         $this->userService = $service;
     }
-    public function render()
+    public function render(): View
     {
         $user = $this->userService->user();
         return view('livewire.decoration.profile', compact('user'));

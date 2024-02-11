@@ -27,7 +27,7 @@ class CourseController extends Controller
 
     public function show(Course $course): View
     {
-        $teacher = $course->teachers()?->first()?->fullName;
+        $teacher = $course->course_teacher()?->first()?->fullName;
 
         $materials[] = $course->materials()->get();
 

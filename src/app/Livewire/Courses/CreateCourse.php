@@ -3,7 +3,7 @@
 namespace App\Livewire\Courses;
 
 use App\Models\Course;
-use App\Models\CourseTeacher;
+use App\Models\CourseUser;
 use App\Models\User;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -35,9 +35,10 @@ class CreateCourse extends Component
         /** @var User $user */
         $user = auth()->user()?->id;
 
+        /** @var Course $course */
         $course = Course::query()->create($data);
 
-        CourseTeacher::query()->create(['user_id' => $user, 'course_id' => $course->id]);
+        $course->course_teacher()->sync([$user]);
 
         $this->toast()->success('Вы успешно создали курс')->send();
         $this->reset();
