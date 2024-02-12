@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthorizationController;
 use App\Http\Controllers\Main\Course\CourseController;
 use App\Http\Controllers\Main\Course\Lesson\LessonController;
+use App\Http\Controllers\Main\Course\Personal\PersonalController;
 use App\Http\Controllers\Main\Course\Student\StudentController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Register\RegistrationController;
@@ -50,9 +51,13 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
             Route::delete('/material/{material}/', [LessonController::class, 'delete'])->name('course.lesson.delete');
         });
 
-        Route::group(['namespace' => 'Student', 'prefix' => 'student'], function (){
+        Route::group(['namespace' => 'Student', 'prefix' => 'student'], function () {
             Route::post('/{course}/subscribe', [StudentController::class, 'subscribe'])->name('course.student.subscribe');
             Route::post('/{course}/unsubscribe', [StudentController::class, 'unsubscribe'])->name('course.student.unsubscribe');
+        });
+
+        Route::group(['namespace' => 'Personal', 'prefix' => 'personal'], function () {
+            Route::get('/', [PersonalController::class, 'index'])->name('course.personal.index');
         });
     });
 });

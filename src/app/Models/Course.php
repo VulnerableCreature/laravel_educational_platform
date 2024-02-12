@@ -22,7 +22,7 @@ class Course extends Model
 
     public function getFirstLetterAttribute(): string
     {
-        return Str::take($this->title, 2);
+        return Str::take(Str::upper($this->title), 2);
     }
 
     public function course_teacher(): BelongsToMany

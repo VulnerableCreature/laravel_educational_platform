@@ -6,7 +6,8 @@
     <section class="w-full">
         @forelse($courses as $course)
             <a href="{{ route('course.show', $course->id) }}">
-                <div class="h-20 rounded-lg flex items-center justify-between hover:bg-[#f5f3ff] px-3 group cursor-pointer">
+                <div
+                    class="h-20 rounded-lg flex items-center justify-between hover:bg-[#f5f3ff] px-3 group cursor-pointer">
                     <div class="flex items-center gap-4">
                         <div
                             class="w-14 h-14 bg-[#e5f3ff] rounded-md opacity-80 flex items-center justify-center group-hover:bg-[#f5f3ff]">
@@ -14,16 +15,14 @@
                         </div>
                         <div class="flex flex-col items-start">
                             <span class="text-md font-semibold">{{ $course->title }}</span>
-                            <span class="text-sm font-normal">{{ $course->materials()->count() }} {{ trans_choice('Уроков|Урок', $course->materials()->count()) }}</span>
+                            <span
+                                class="text-sm font-normal">{{ $course->materials()->count() }} {{ trans_choice('Уроков|Урок', $course->materials()->count()) }}</span>
                         </div>
                     </div>
-                    <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
-                        </svg>
-
-                    </a>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+                    </svg>
                 </div>
             </a>
         @empty

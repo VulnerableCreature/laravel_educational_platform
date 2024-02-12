@@ -32,7 +32,7 @@
         </div>
         <div class="flex items-center justify-between">
             <span class="text-2xl font-semibold">Мои курсы</span>
-            <a href="#" class="text-[#8a70d6] underline underline-offset-1">Смотреть все</a>
+            <a href="{{ route('course.personal.index') }}" class="text-[#8a70d6] underline underline-offset-1">Смотреть все</a>
         </div>
         <div class="flex flex-col gap-2">
             @forelse($courses_user as $course_user)
