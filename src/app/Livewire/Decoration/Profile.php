@@ -17,6 +17,9 @@ class Profile extends Component
     public function render(): View
     {
         $user = $this->userService->user();
-        return view('livewire.decoration.profile', compact('user'));
+
+        $courses_user = $user->courses()->take(3)->get();
+
+        return view('livewire.decoration.profile', compact('user', 'courses_user'));
     }
 }

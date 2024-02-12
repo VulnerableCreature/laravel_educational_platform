@@ -10,7 +10,7 @@
                     <div class="flex items-center gap-4">
                         <div
                             class="w-14 h-14 bg-[#e5f3ff] rounded-md opacity-80 flex items-center justify-center group-hover:bg-[#f5f3ff]">
-                            <span class="text-lg font-semibold">ПТ</span>
+                            <span class="text-lg font-semibold">{{ $course->firstLetter }}</span>
                         </div>
                         <div class="flex flex-col items-start">
                             <span class="text-md font-semibold">{{ $course->title }}</span>

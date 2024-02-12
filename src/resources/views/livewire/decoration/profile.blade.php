@@ -35,14 +35,14 @@
             <a href="#" class="text-[#8a70d6] underline underline-offset-1">Смотреть все</a>
         </div>
         <div class="flex flex-col gap-2">
-            @for ($i = 0; $i < 3; $i++)
-                <a href="" class="flex flex-col gap-1 px-2 py-3 rounded-xl hover:bg-[#efecff]">
+            @forelse($courses_user as $course_user)
+                <a href="{{ route('course.show', $course_user->id) }}" class="flex flex-col gap-1 px-2 py-3 rounded-xl hover:bg-[#efecff]">
                     <div class="flex items-center justify-between gap-2">
                         <div class="flex items-center gap-2">
-                            <x-avatar text="TS" color="white"/>
+                            <x-avatar text="{{ $course_user->firstLetter }}" color="white"/>
                             <div class="flex flex-col">
-                                <span class="text-md font-medium">Python</span>
-                                <span class="text-sm font-regular">Ким Виктор Валериянович</span>
+                                <span class="text-md font-medium">{{ $course_user->title }}</span>
+                                <span class="text-sm font-regular">{{ $course_user->course_teacher()?->first()?->fullName ?? 'Отсутствует' }}</span>
                             </div>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -51,11 +51,12 @@
                         </svg>
                     </div>
                 </a>
-            @endfor
-        </div>
-{{--            <div class="flex items-center justify-center gap-2">--}}
-{{--                <span class="font-regular text-lg">Вы пока не добавили не одно курса</span>--}}
-{{--            </div>--}}
+            @empty
+                <div class="flex items-center justify-center gap-2">
+                    <span class="font-regular text-lg">Вы пока не добавили не одно курса</span>
+                </div>
+            @endforelse
+
         </div>
     </section>
 </div>

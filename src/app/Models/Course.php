@@ -27,12 +27,12 @@ class Course extends Model
 
     public function course_teacher(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'course_teacher', 'course_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'course_teacher')->withTimestamps();
     }
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'course_user', 'course_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'course_user')->withTimestamps();
     }
 
     public function materials(): HasMany
