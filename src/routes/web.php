@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthorizationController;
+use App\Http\Controllers\Main\Admin\AdminController;
 use App\Http\Controllers\Main\Course\CourseController;
 use App\Http\Controllers\Main\Course\Lesson\LessonController;
 use App\Http\Controllers\Main\Course\Personal\PersonalController;
@@ -59,5 +60,9 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::group(['namespace' => 'Personal', 'prefix' => 'personal'], function () {
             Route::get('/', [PersonalController::class, 'index'])->name('course.personal.index');
         });
+    });
+
+    Route::group(['namespace' => 'Admin', 'prefix' => 'administrator'], function () {
+        Route::get('/', [AdminController::class, 'index'])->name('main.admin.index');
     });
 });

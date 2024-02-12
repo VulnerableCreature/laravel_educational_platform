@@ -1,7 +1,6 @@
 <div>
     <div class="flex items-center justify-between mb-4">
         <span class="text-2xl font-semibold">Популярные курсы</span>
-        <a href="#" class="text-[#8a70d6] underline underline-offset-1">Смотреть все</a>
     </div>
     <section class="w-full">
         @forelse($courses as $course)
