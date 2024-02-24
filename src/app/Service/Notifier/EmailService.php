@@ -3,26 +3,23 @@
 namespace App\Service\Notifier;
 
 use App\Contracts\Notifier\NotifierContract;
-use App\Service\User\UserService;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
+use App\Jobs\Email\EmailSendNotification;
+use App\Models\Course;
+use App\Models\Material;
+use App\Models\User;
 
-class EmailService implements NotifierContract, ShouldQueue
+class EmailService implements NotifierContract
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
-    protected UserService $userService;
-
-    public function __construct(UserService $userService)
+    public function __construct()
     {
-        $this->userService = $userService;
     }
 
-    public function send(): void
+    public function send(User $user, Course $course, Material $material): void
     {
-        // TODO: Implement send() method.
+        EmailSendNotification::dispatch($user, $course, $material)->delay(now()->addSeconds()); // 20 minute
+        EmailSendNotification::dispatch($user, $course, $material)->delay(now()->addMinutes(2)); // 1 hour
+        EmailSendNotification::dispatch($user, $course, $material)->delay(now()->addMinutes(3)); // 1 day
+        EmailSendNotification::dispatch($user, $course, $material)->delay(now()->addMinutes(4)); // 2 days
+        EmailSendNotification::dispatch($user, $course, $material)->delay(now()->addMinutes(5)); // 3 days
     }
 }

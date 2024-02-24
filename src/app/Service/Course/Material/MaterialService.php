@@ -27,6 +27,4 @@ class MaterialService implements MaterialContract
     {
         $material->delete();
     }
-
-
 }

@@ -9,7 +9,7 @@
                 <div class="flex flex-col flex-shrink">
                     <span class="text-md font-semibold whitespace-nowrap truncate"
                           x-tooltip="{{ $course->title }}">{{ $course->title }}</span>
-                    <span class="text-sm font-extra">{{ $course->materials()->count() }} {{ trans_choice('Уроков|Урок', $course->materials()->count()) }}</span>
+                    <span class="text-sm font-extra">{{ $course->materials()->count() }} {{ trans_choice('Урока|Уроков', $course->materials()->count()) }}</span>
                 </div>
                 <div class="flex items-center justify-end">
                     <a href="{{ route('course.show', $course->id) }}" class="bg-[#fbab5d] p-1 rounded-md"

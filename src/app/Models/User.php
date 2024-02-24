@@ -10,6 +10,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * @property string $surname
+ * @property string $name
+ * @property string $middleName
+ * @property string $login
+ * @property string $password
+ * @property string $email
+ */
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -48,18 +57,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public static function boot(): void
-    {
-        parent::boot();
-
-        static::created(function ($user) {
-            EmailService::dispatch($user)->delay(now()->addHours(2));
-        });
-    }
-
     public function getFullNameAttribute(): string
     {
         return $this->surname . ' ' . $this->name . ' ' . $this->middleName;
+    }
+
+    public function getSurnameMiddleAttribute(): string
+    {
+        return $this->name . ' ' . $this->middleName;
     }
 
     public function courses(): BelongsToMany

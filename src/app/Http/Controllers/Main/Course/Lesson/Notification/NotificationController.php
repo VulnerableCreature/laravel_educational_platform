@@ -5,28 +5,25 @@ namespace App\Http\Controllers\Main\Course\Lesson\Notification;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Material;
-use App\Service\Course\CourseService;
-use App\Service\Course\Material\MaterialService;
 use App\Service\Notifier\EmailService;
+use App\Service\User\UserService;
 use Illuminate\Http\RedirectResponse;
 
 class NotificationController extends Controller
 {
-    protected CourseService $course;
-    protected MaterialService $material;
     protected EmailService $emailService;
+    protected UserService $userService;
 
-    public function __construct(CourseService $courseService, MaterialService $materialService, EmailService $emailService)
+    public function __construct(EmailService $emailService, UserService $userService)
     {
-        $this->course = $courseService;
-        $this->material = $materialService;
         $this->emailService = $emailService;
+        $this->userService = $userService;
     }
-    public function store(Course$course, Material $material): RedirectResponse
+
+    public function store(Course $course, Material $material): RedirectResponse
     {
-        // TODO: Подумать над тем как будет вызываться сервис и упаковываться email уведомление пользователю
-        // TODO: Добавить таблицу users_notifications
-        // TODO: Добавить таблицу course_likes
+        $user = $this->userService->user();
+        $this->emailService->send($user, $course, $material);
         return redirect()->route('course.show', compact('course'))->with('success', 'Напоминание установлено!');
     }
 }
