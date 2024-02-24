@@ -16,7 +16,6 @@ class Material extends Model
         'course_id',
         'title',
         'description',
-        'isVisible',
         'file_path'
     ];
 }

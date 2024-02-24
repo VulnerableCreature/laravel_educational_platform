@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Service\Notifier\EmailService;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -46,6 +47,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function boot(): void
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            EmailService::dispatch($user)->delay(now()->addHours(2));
+        });
+    }
 
     public function getFullNameAttribute(): string
     {

@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use App\Contracts\Course\Material\MaterialContract;
-use App\Contracts\File\UploadContract;
+use App\Contracts\Notifier\NotifierContract;
 use App\Service\Course\Material\MaterialService;
-use App\Service\Upload\UploadService;
+use App\Service\Notifier\EmailService;
 use App\Service\User\UserService;
 use App\Contracts\User\UserContract;
 use TallStackUi\Facades\TallStackUi;
@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(RegisterContract::class, RegisterService::class);
         $this->app->bind(CourseContract::class, CourseService::class);
         $this->app->bind(MaterialContract::class, MaterialService::class);
+        $this->app->bind(NotifierContract::class, EmailService::class);
     }
 
     /**

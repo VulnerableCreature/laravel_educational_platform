@@ -18,7 +18,6 @@ class MaterialService implements MaterialContract
         $material->update([
             'title' => Arr::get($data, 'title'),
             'description' => Arr::get($data, 'description'),
-            'isVisible' => Arr::get($data, 'isVisible'),
             'course_id' => Arr::get($data, 'course_id'),
             'file_path' => Arr::get($data, 'files') ?? $material->file_path
         ]);
@@ -28,4 +27,6 @@ class MaterialService implements MaterialContract
     {
         $material->delete();
     }
+
+
 }

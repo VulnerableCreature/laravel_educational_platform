@@ -122,7 +122,7 @@
                 @foreach($materials as $material)
                     @forelse($material as $value)
                         <div
-                            class="block w-full h-full border-b border-gray-300 last:border-b-0 py-4 px-2 flex flex-col gap-10">
+                            class="w-full h-full border-b border-gray-300 last:border-b-0 py-4 px-2 flex flex-col gap-10">
                             <div class="flex items-center justify-between">
                                 <span class="font-semibold text-xl truncate">{{ $value->title }}</span>
                                 <div class="flex items-center gap-2">
@@ -136,19 +136,6 @@
                                                   d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/>
                                         </svg>
                                     </a>
-                                    {{--                                    <form action="#" class="flex items-center">--}}
-                                    {{--                                        <button class="p-1 rounded-md hover:bg-blue-400 group" x-tooltip="Скрыть урок">--}}
-                                    {{--                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"--}}
-                                    {{--                                                 stroke-width="1.5" stroke="currentColor"--}}
-                                    {{--                                                 class="w-6 h-6 group-hover:stroke-white">--}}
-                                    {{--                                                <path stroke-linecap="round" stroke-linejoin="round"--}}
-                                    {{--                                                      d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>--}}
-                                    {{--                                                <path stroke-linecap="round" stroke-linejoin="round"--}}
-                                    {{--                                                      d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>--}}
-                                    {{--                                            </svg>--}}
-
-                                    {{--                                        </button>--}}
-                                    {{--                                    </form>--}}
                                     <form action="{{ route('course.lesson.delete', [$course->id, $value->id]) }}"
                                           method="post" class="flex items-center">
                                         @csrf
@@ -189,7 +176,8 @@
                                     @endif
                                 </div>
                             </div>
-                            <form action="#" class="flex items-center justify-end">
+                            <form action="{{ route('course.material.notification.store', [$course->id, $value->id]) }}" class="flex items-center justify-end" method="POST">
+                                @csrf
                                 <button
                                     class="p-2 flex items-center gap-2 rounded-md bg-[#ebe9fb] hover:bg-[#6366f1] group">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
