@@ -27,6 +27,6 @@ class NotificationController extends Controller
         // TODO: Подумать над тем как будет вызываться сервис и упаковываться email уведомление пользователю
         // TODO: Добавить таблицу users_notifications
         // TODO: Добавить таблицу course_likes
-        return redirect()->route('course.show')->with('success', 'Напоминание установлено!');
+        return redirect()->route('course.show', compact('course'))->with('success', 'Напоминание установлено!');
     }
 }
