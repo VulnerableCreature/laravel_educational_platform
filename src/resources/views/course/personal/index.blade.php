@@ -4,7 +4,7 @@
 @section('content')
     <div class="flex flex-col">
         @forelse($course_users as $course_user)
-            <a href="#"
+            <a href="{{ route('course.show', $course_user->id) }}"
                class="flex flex-col gap-1 px-2 py-3 rounded-xl hover:bg-[#efecff]">
                 <div class="flex items-center justify-between gap-2">
                     <div class="flex items-center gap-2">

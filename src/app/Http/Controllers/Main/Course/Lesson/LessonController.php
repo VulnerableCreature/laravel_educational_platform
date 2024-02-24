@@ -25,8 +25,7 @@ class LessonController extends Controller
 
     public function create(Course $course): View
     {
-        $visible = Material::visible();
-        return view('course.lesson.create', compact('visible', 'course'));
+        return view('course.lesson.create', compact('course'));
     }
 
     public function store(LessonStoreRequest $request, Course $course): RedirectResponse
@@ -43,8 +42,7 @@ class LessonController extends Controller
 
     public function edit(Course $course, Material $material): View
     {
-        $visible = Material::visible();
-        return view('course.lesson.edit', compact('course', 'material', 'visible'));
+        return view('course.lesson.edit', compact('course', 'material'));
     }
 
     public function update(LessonUpdateRequest $request, Course $course, Material $material): RedirectResponse

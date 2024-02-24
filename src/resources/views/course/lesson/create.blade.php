@@ -51,15 +51,6 @@
                 </div>
                 @enderror
             </div>
-            <div class="w-full flex flex-col justify-center gap-2">
-                <label for="select_visible">Видимость материала</label>
-                <select name="isVisible" id="select_visible"
-                        class="w-full rounded-lg border-gray-300 placeholder:text-gray-500 pl-10 focus:border-[#6366f1] focus:ring-[#6366f1]">
-                    @foreach($visible as $key => $value)
-                        <option value="{{ $key }}">{{ $value }}</option>
-                    @endforeach
-                </select>
-            </div>
             <div class="flex items-center justify-start gap-3">
                 <button type="submit" class="p-2 bg-[#6366f1] text-white rounded-md">Сохранить</button>
                 <a href="{{ route('course.show', $course->id) }}" class="p-2 bg-[#efecff] text-black rounded-md">Назад</a>

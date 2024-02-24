@@ -19,12 +19,4 @@ class Material extends Model
         'isVisible',
         'file_path'
     ];
-
-    public static function visible(): array
-    {
-        return [
-            1 => 'Показать',
-            0 => 'Скрыть',
-        ];
-    }
 }

@@ -16,7 +16,6 @@ class LessonStoreRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'required',
-            'isVisible' => 'required',
             'files' => 'nullable|file|mimes:pdf,docx'
         ];
     }

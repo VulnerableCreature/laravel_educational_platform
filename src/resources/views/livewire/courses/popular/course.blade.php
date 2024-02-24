@@ -15,7 +15,7 @@
                         <div class="flex flex-col items-start">
                             <span class="text-md font-semibold">{{ $course->title }}</span>
                             <span
-                                class="text-sm font-normal">{{ $course->materials()->count() }} {{ trans_choice('Уроков|Урок', $course->materials()->count()) }}</span>
+                                class="text-sm font-normal">{{ $course->materials()->count() }} {{ trans_choice('Участник|Участников', $course->materials()->count()) }}</span>
                         </div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
