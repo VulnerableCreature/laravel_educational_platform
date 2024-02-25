@@ -22,14 +22,14 @@ class RegisterRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'login.required' => 'Поле логин обязательно',
             'password.required' => 'Поле пароль обязательно',
             'surname.required' => 'Поле фамилия обязательно',
             'name.required' => 'Поле имя обязательно',
-            'middleName.required' => 'Поле отчетсво обязательно',
+            'middleName.required' => 'Поле отчество обязательно',
             'email.required' => 'Поле пароль обязательно',
             'email.unique' => 'Пользователь с таким email уже существует',
             'login.unique' => 'Пользователь с таким логином уже существует',

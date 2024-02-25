@@ -28,7 +28,7 @@
             <img src="{{ asset('images/user-profile.png') }}" alt="Image: User profile"
                  class="w-48 h-48 object-contain">
             <span class="text-md font-medium">{{ $user->fullName }}</span>
-            <span class="text-gray-500">Студент</span>
+            <span class="text-gray-500">{{ $user->role->title }}</span>
         </div>
         <div class="flex items-center justify-between">
             <span class="text-2xl font-semibold">Мои курсы</span>

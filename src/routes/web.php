@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthorizationController;
 use App\Http\Controllers\Main\Admin\AdminController;
+use App\Http\Controllers\Main\Admin\User\AdminUserController;
 use App\Http\Controllers\Main\Course\CourseController;
 use App\Http\Controllers\Main\Course\Lesson\LessonController;
 use App\Http\Controllers\Main\Course\Lesson\Notification\NotificationController;
@@ -68,6 +69,14 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
     });
 
     Route::group(['namespace' => 'Admin', 'prefix' => 'administrator'], function () {
-        Route::get('/', [AdminController::class, 'index'])->name('main.admin.index');
+        Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+
+        Route::group(['namespace' => 'User', 'prefix' => 'user'], function (){
+            Route::get('/{user}', [AdminUserController::class, 'show'])->name('admin.user.show');
+            Route::get('/edit/{user}', [AdminUserController::class, 'edit'])->name('admin.user.edit');
+            Route::patch('/{user}', [AdminUserController::class, 'update'])->name('admin.user.update');
+            Route::delete('/{user}', [AdminUserController::class, 'delete'])->name('admin.user.delete');
+        });
+        Route::group(['namespace' => 'Role', 'prefix' => 'role'], function (){});
     });
 });

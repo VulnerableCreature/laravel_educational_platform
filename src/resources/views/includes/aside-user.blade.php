@@ -75,7 +75,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('main.admin.index') }}"
+                    <a href="{{ route('admin.index') }}"
                        class="flex items-center px-2 py-2 group hover:bg-[#e9e3ff] transition rounded-md {{ Route::is('main.admin.index') ? 'bg-[#e9e3ff]' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                              stroke="currentColor"
