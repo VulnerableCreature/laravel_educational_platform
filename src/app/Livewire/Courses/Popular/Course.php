@@ -18,8 +18,8 @@ class Course extends Component
     private function courses(): Collection|array
     {
         return CourseModel::query()
-            ->withCount('users')
-            ->orderBy('users_count', 'desc')
+            ->withCount('likes')
+            ->orderBy('likes_count', 'desc')
             ->take(5)
             ->get();
     }

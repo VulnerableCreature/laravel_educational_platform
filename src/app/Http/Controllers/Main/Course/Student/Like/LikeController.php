@@ -19,7 +19,11 @@ class LikeController extends Controller
     public function store(Course $course): RedirectResponse
     {
         $user = $this->userService->user();
-        $course->likes()->sync([$user->id]);
-        return redirect()->route('course.show', compact('course'))->with('success', 'Вы поставила отметку нравится!');
+        if (!$course->likes->contains($user->id)) {
+            $course->likes()->attach([$user->id]);
+            return redirect()->route('course.show', compact('course'))->with('success', 'Вы поставила отметку нравится!');
+        } else {
+            return redirect()->route('course.show', compact('course'))->with('success', 'Вы уже поставили отметку!');
+        }
     }
 }

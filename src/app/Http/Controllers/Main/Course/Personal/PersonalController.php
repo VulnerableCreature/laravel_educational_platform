@@ -22,9 +22,9 @@ class PersonalController extends Controller
         $user = $this->userService->user();
 
         $course_users = $user->courses()->get();
+        $course_teachers = $user->course_teacher()->get();
 
-        //TODO: add courses for teacher
 
-        return view('course.personal.index', compact('course_users'));
+        return view('course.personal.index', compact('course_users', 'course_teachers'));
     }
 }

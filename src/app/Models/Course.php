@@ -49,6 +49,6 @@ class Course extends Model
 
     public function likes(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'like_courses');
+        return $this->belongsToMany(User::class, 'like_courses')->withTimestamps();
     }
 }

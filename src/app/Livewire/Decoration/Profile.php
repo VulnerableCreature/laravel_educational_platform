@@ -20,7 +20,8 @@ class Profile extends Component
 
         // TODO: Добавить вывод курсов преподавателя и добавить политику для отображения
         $courses_user = $user->courses()->take(3)->get();
+        $courses_teacher = $user->course_teacher()->take(3)->get();
 
-        return view('livewire.decoration.profile', compact('user', 'courses_user'));
+        return view('livewire.decoration.profile', compact('user', 'courses_user', 'courses_teacher'));
     }
 }
