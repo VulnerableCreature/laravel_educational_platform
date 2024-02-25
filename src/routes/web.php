@@ -11,6 +11,7 @@ use App\Http\Controllers\Main\Course\Student\Like\LikeController;
 use App\Http\Controllers\Main\Course\Student\Notification\NotificationController;
 use App\Http\Controllers\Main\Course\Student\StudentController;
 use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Main\Profile\ProfileController;
 use App\Http\Controllers\Register\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
@@ -91,5 +92,10 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
             Route::patch('/{role}', [AdminRoleController::class, 'update'])->name('admin.role.update');
             Route::delete('/{role}', [AdminRoleController::class, 'delete'])->name('admin.role.delete');
         });
+    });
+
+    Route::group(['namespace' => 'Profile', 'prefix' => 'profile'], function (){
+        Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+        Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
     });
 });
