@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string $password
  * @property string $email
  * @property int    $role_id
+ * @property Role   $role
  */
 
 class User extends Authenticatable

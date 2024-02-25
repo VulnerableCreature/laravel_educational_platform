@@ -47,21 +47,21 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         Route::patch('/course/{course}', [CourseController::class, 'update'])->name('course.update');
         Route::delete('/course/{course}', [CourseController::class, 'destroy'])->name('course.destroy');
 
-        Route::group(['namespace' => 'Lesson', 'prefix' => 'course/{course}/lesson'], function () {
+        Route::group(['namespace' => 'Lesson', 'prefix' => 'course/{course}/lesson', 'middleware' => 'teacher'], function () {
             Route::get('/create', [LessonController::class, 'create'])->name('course.lesson.create');
             Route::post('/', [LessonController::class, 'store'])->name('course.lesson.store');
             Route::get('/material/{material}/edit', [LessonController::class, 'edit'])->name('course.lesson.edit');
             Route::patch('/material/{material}/', [LessonController::class, 'update'])->name('course.lesson.update');
             Route::delete('/material/{material}/', [LessonController::class, 'delete'])->name('course.lesson.delete');
-
-            Route::group(['namespace' => 'Notification', 'prefix' => 'notification/material/{material}'], function (){
-                Route::post('/', [NotificationController::class, 'store'])->name('course.material.notification.store');
-            });
         });
 
-        Route::group(['namespace' => 'Student', 'prefix' => 'student'], function () {
+        Route::group(['namespace' => 'Student', 'prefix' => 'student', 'middleware' => 'student'], function () {
             Route::post('/{course}/subscribe', [StudentController::class, 'subscribe'])->name('course.student.subscribe');
             Route::post('/{course}/unsubscribe', [StudentController::class, 'unsubscribe'])->name('course.student.unsubscribe');
+
+            Route::group(['namespace' => 'Notification', 'prefix' => 'notification/course/{course}/material/{material}'], function (){
+                Route::post('/', [NotificationController::class, 'store'])->name('student.notification.store');
+            });
         });
 
         Route::group(['namespace' => 'Personal', 'prefix' => 'personal'], function () {
@@ -69,7 +69,7 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
         });
     });
 
-    Route::group(['namespace' => 'Admin', 'prefix' => 'administrator'], function () {
+    Route::group(['namespace' => 'Admin', 'prefix' => 'administrator', 'middleware' => 'admin'], function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 
         Route::group(['namespace' => 'User', 'prefix' => 'user'], function (){

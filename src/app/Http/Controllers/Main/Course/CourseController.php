@@ -29,7 +29,7 @@ class CourseController extends Controller
     {
         $teacher = $course->course_teacher()?->first()?->fullName;
 
-        $materials[] = $course->materials()->get();
+        $materials = $course->materials()->get();
 
         return view('course.show', compact('course', 'teacher', 'materials'));
     }

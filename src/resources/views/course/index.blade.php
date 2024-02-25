@@ -4,6 +4,7 @@
 @section('content')
     @include('includes.success-message')
     <section class="py-4">
+        @can('view-teacher', auth()->user())
         <div class="flex items-center justify-end mb-2">
             <a href="{{ route('course.create') }}"
                class="border px-2 py-1 rounded-md flex items-center gap-2 bg-[#6366f1] text-white">
@@ -15,6 +16,7 @@
                 <span class="font-regular text-sm">Добавить</span>
             </a>
         </div>
+        @endcan
         <div class="flex flex-col">
             @forelse($courses as $course)
                 <a href="{{ route('course.show', $course->id) }}"

@@ -70,6 +70,7 @@
                         </svg>
                     </a>
                 </li>
+                @can('view-admin', auth()->user())
                 <li>
                     <a href="{{ route('admin.index') }}"
                        class="flex items-center px-2 py-2 group hover:bg-[#e9e3ff] transition rounded-md">
@@ -92,6 +93,7 @@
                         </svg>
                     </a>
                 </li>
+                @endcan
             </ul>
         </x-slide>
     </div>
