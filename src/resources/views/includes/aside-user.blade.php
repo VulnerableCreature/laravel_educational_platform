@@ -54,6 +54,7 @@
                         </svg>
                     </a>
                 </li>
+                @can('no-admin', auth()->user())
                 <li>
                     <a href="{{ route('course.personal.index') }}"
                        class="flex items-center px-2 py-2 group hover:bg-[#e9e3ff] transition rounded-md {{ Route::is('course.personal.index') ? 'bg-[#e9e3ff]' : '' }}">
@@ -74,6 +75,7 @@
                         </svg>
                     </a>
                 </li>
+                @endcan
                 @can('view-admin', auth()->user())
                 <li>
                     <a href="{{ route('admin.index') }}"

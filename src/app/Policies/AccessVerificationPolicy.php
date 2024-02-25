@@ -20,4 +20,9 @@ class AccessVerificationPolicy
     {
         return $user->role->id == 3;
     }
+
+    public function noAdmin(User $user): bool
+    {
+        return $user->role->id != 1;
+    }
 }
