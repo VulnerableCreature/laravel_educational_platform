@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * @property int $id
+ * @property string $title
+ * @property string $description
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class Course extends Model
 {
     use HasFactory;
@@ -38,5 +45,10 @@ class Course extends Model
     public function materials(): HasMany
     {
         return $this->hasMany(Material::class, 'course_id', 'id');
+    }
+
+    public function likes(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'like_courses');
     }
 }

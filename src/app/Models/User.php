@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
+ * @property int    $id
  * @property string $surname
  * @property string $name
  * @property string $middleName

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Main\Course\Lesson\Notification;
+namespace App\Http\Controllers\Main\Course\Student\Notification;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;

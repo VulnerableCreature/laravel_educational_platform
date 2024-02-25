@@ -6,8 +6,9 @@ use App\Http\Controllers\Main\Admin\Role\AdminRoleController;
 use App\Http\Controllers\Main\Admin\User\AdminUserController;
 use App\Http\Controllers\Main\Course\CourseController;
 use App\Http\Controllers\Main\Course\Lesson\LessonController;
-use App\Http\Controllers\Main\Course\Lesson\Notification\NotificationController;
 use App\Http\Controllers\Main\Course\Personal\PersonalController;
+use App\Http\Controllers\Main\Course\Student\Like\LikeController;
+use App\Http\Controllers\Main\Course\Student\Notification\NotificationController;
 use App\Http\Controllers\Main\Course\Student\StudentController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Register\RegistrationController;
@@ -61,6 +62,10 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
 
             Route::group(['namespace' => 'Notification', 'prefix' => 'notification/course/{course}/material/{material}'], function (){
                 Route::post('/', [NotificationController::class, 'store'])->name('student.notification.store');
+            });
+
+            Route::group(['namespace' => 'Like', 'prefix' => 'like'], function (){
+                Route::post('/{course}', [LikeController::class, 'store'])->name('student.like.store');
             });
         });
 
