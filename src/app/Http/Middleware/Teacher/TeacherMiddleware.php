@@ -18,7 +18,7 @@ class TeacherMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $user = $this->userService->user();
-        if ($user->role->id !== 6) {
+        if ($user->role->id !== 2) {
             abort(403);
         }
         return $next($request);

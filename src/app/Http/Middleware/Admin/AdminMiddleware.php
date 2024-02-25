@@ -19,7 +19,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $user = $this->userService->user();
-        if ($user->role->id !== 5) {
+        if ($user->role->id !== 1) {
             abort(403);
         }
         return $next($request);

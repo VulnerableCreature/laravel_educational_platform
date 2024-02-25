@@ -8,16 +8,16 @@ class AccessVerificationPolicy
 {
     public function viewAdmin(User $user): bool
     {
-        return $user->role->id === 5;
+        return $user->role->id == 1;
     }
 
     public function viewTeacher(User $user): bool
     {
-        return $user->role->id === 6;
+        return $user->role->id == 2;
     }
 
     public function viewStudent(User $user): bool
     {
-        return $user->role->id === 7;
+        return $user->role->id == 3;
     }
 }

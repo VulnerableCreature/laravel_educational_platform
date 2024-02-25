@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,17 @@ class DatabaseSeeder extends Seeder
         Role::query()->create([
             'title' => 'Студент'
         ]);
+
+        User::query()->create([
+            'surname' => 'Admin',
+            'name' => 'Admin',
+            'middleName' => 'Admin',
+            'email' => 'admin@mail.ru',
+            'login' => 'admin',
+            'password' => Hash::make('123'),
+            'role_id' => 1,
+        ]);
+
         User::factory(10)->create();
         Course::factory(10)->create();
     }
