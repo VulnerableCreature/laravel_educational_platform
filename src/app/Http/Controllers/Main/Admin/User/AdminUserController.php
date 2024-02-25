@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Arr;
 use Illuminate\View\View;
 
 class AdminUserController extends Controller
@@ -18,7 +19,8 @@ class AdminUserController extends Controller
 
     public function edit(User $user): View
     {
-        return view('admin.user.edit', compact('user'));
+        $roles = Role::all()->sortBy('title');
+        return view('admin.user.edit', compact('user', 'roles'));
     }
 
     public function update(UpdateUserRequest $request, User $user): RedirectResponse

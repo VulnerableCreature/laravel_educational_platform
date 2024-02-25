@@ -51,6 +51,12 @@
             </div>
             @enderror
 
+            <select name="role_id" class="w-full px-10 border-gray-400 text-gray-700 placeholder:text-gray-500 rounded-md pl-10 focus:border-[#6366f1] focus:ring-[#6366f1]">
+                @foreach($roles as $role)
+                    <option value="{{ $role->id }}">{{ $role->title }}</option>
+                @endforeach
+            </select>
+
             <div class="flex items-center justify-start gap-3">
                 <button type="submit" class="p-2 bg-[#6366f1] text-white rounded-md">Обновить</button>
                 <a href="{{ route('admin.user.show', $user->id) }}" class="p-2 bg-[#efecff] text-black rounded-md">Назад</a>

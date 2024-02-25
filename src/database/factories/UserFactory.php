@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -30,6 +31,7 @@ class UserFactory extends Factory
             'email' => $this->faker->email,
             'login' => Str::random(7),
             'password' => Hash::make('123'),
+            'role_id' => Role::query()->get()->random()->id,
         ];
     }
 

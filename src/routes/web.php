@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthorizationController;
 use App\Http\Controllers\Main\Admin\AdminController;
+use App\Http\Controllers\Main\Admin\Role\AdminRoleController;
 use App\Http\Controllers\Main\Admin\User\AdminUserController;
 use App\Http\Controllers\Main\Course\CourseController;
 use App\Http\Controllers\Main\Course\Lesson\LessonController;
@@ -77,6 +78,13 @@ Route::group(['namespace' => 'Main', 'prefix' => 'main', 'middleware' => 'auth']
             Route::patch('/{user}', [AdminUserController::class, 'update'])->name('admin.user.update');
             Route::delete('/{user}', [AdminUserController::class, 'delete'])->name('admin.user.delete');
         });
-        Route::group(['namespace' => 'Role', 'prefix' => 'role'], function (){});
+
+        Route::group(['namespace' => 'Role', 'prefix' => 'role'], function (){
+            Route::get('/create', [AdminRoleController::class, 'create'])->name('admin.role.create');
+            Route::post('/', [AdminRoleController::class, 'store'])->name('admin.role.store');
+            Route::get('/{role}/edit', [AdminRoleController::class, 'edit'])->name('admin.role.edit');
+            Route::patch('/{role}', [AdminRoleController::class, 'update'])->name('admin.role.update');
+            Route::delete('/{role}', [AdminRoleController::class, 'delete'])->name('admin.role.delete');
+        });
     });
 });

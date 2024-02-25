@@ -28,21 +28,24 @@
             <img src="{{ asset('images/user-profile.png') }}" alt="Image: User profile"
                  class="w-48 h-48 object-contain">
             <span class="text-md font-medium">{{ $user->fullName }}</span>
-            <span class="text-gray-500">{{ $user->role->title }}</span>
+            <span class="text-gray-500">{{ $user->role->title ?? 'Отсутствует' }}</span>
         </div>
         <div class="flex items-center justify-between">
             <span class="text-2xl font-semibold">Мои курсы</span>
-            <a href="{{ route('course.personal.index') }}" class="text-[#8a70d6] underline underline-offset-1">Смотреть все</a>
+            <a href="{{ route('course.personal.index') }}" class="text-[#8a70d6] underline underline-offset-1">Смотреть
+                все</a>
         </div>
         <div class="flex flex-col gap-2">
             @forelse($courses_user as $course_user)
-                <a href="{{ route('course.show', $course_user->id) }}" class="flex flex-col gap-1 px-2 py-3 rounded-xl hover:bg-[#efecff]">
+                <a href="{{ route('course.show', $course_user->id) }}"
+                   class="flex flex-col gap-1 px-2 py-3 rounded-xl hover:bg-[#efecff]">
                     <div class="flex items-center justify-between gap-2">
                         <div class="flex items-center gap-2">
                             <x-avatar text="{{ $course_user->firstLetter }}" color="white"/>
                             <div class="flex flex-col">
                                 <span class="text-md font-medium">{{ $course_user->title }}</span>
-                                <span class="text-sm font-regular">{{ $course_user->course_teacher()?->first()?->fullName ?? 'Отсутствует' }}</span>
+                                <span
+                                    class="text-sm font-regular">{{ $course_user->course_teacher()?->first()?->fullName ?? 'Отсутствует' }}</span>
                             </div>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
