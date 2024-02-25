@@ -120,6 +120,10 @@ php artisan db:seed
 php artisan storage:link
 ```
 
+```bash
+php artisan queue:work
+```
+
 14. Open browser go to link
 ```bash
 http://127.0.0.1:8000/
